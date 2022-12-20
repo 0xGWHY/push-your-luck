@@ -1,38 +1,380 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+:root {
+  --purple: #7f00ff;
+  --pink: #e100ff;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* 웹 폰트 적용 */
+@import url("https://fonts.googleapis.com/css2?family=Margarine&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+/* font-family: 'Margarine', cursive;
+font-family: 'Noto Sans KR', sans-serif; */
+
+.App * {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 300px;
+  height: 400px;
+  /* background-color: rgb(251, 194, 044); */
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.16), 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.connect-wallet-wrapper {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.connect-wallet {
+  height: 2rem;
+  width: 9rem;
+  border: 2px black solid;
+  background: white !important;
+
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.indicator {
+  margin: 1rem;
+  /* background-color: black; */
+  background: #dde1e7;
+  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+  border: 2px black solid;
+
+  border-radius: 15px;
+  height: 50%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.indicator-result {
+  height: 1.5rem;
+  font-family: "Chivo Mono", monospace;
+  font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.win {
+  color: green !important;
+}
+.lose {
+  color: red !important;
+}
+.indicator.lose {
+  background-color: black;
+  border: 2px solid red;
+  box-shadow: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.indicator-restEth {
+  font-family: "Chivo Mono", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  margin-right: 1rem;
+  height: 2rem;
+  font-size: 2rem;
+  width: 100%;
+}
+.indicator-restEth img {
+  margin-right: 0.5rem;
+}
+
+.indicator-price {
+  font-family: "Chivo Mono", monospace;
+  flex: 1 0 0;
+  font-size: 0.8rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.push-button-wrapper {
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 2rem;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  position: relative;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0.75em 1.75em;
+  border-radius: 50px;
+  display: inline-block;
+  color: #fff;
+
+  /* Our gradient */
+  background: -webkit-gradient(linear, left top, right top, from(var(--purple)), to(var(--pink)));
+  background: linear-gradient(to right, var(--purple), var(--pink));
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -10px;
+  left: 5%;
+  height: 110%;
+  width: 90%;
+  opacity: 0.8;
+  border-radius: 50px;
+
+  /* Declaring our shadow color inherit from the parent (button) */
+  background: inherit;
+
+  /* Blurring the element for shadow effect */
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px);
+
+  /* Transition for the magic */
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+button:hover::after {
+  /* Changing blur effect */
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
+
+  /* And change the style properties */
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+}
+
+button:hover:active::after {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+/* Edge does not support blur effect, so we can just delete the ::after element and replace it by a box-shadow */
+
+@supports (-ms-ime-align: auto) {
+  button {
+    -webkit-box-shadow: 0 20px 20px -15px rgba(127, 0, 255, 0.8);
+    box-shadow: 0 20px 20px -15px rgba(127, 0, 255, 0.8);
   }
-  to {
-    transform: rotate(360deg);
+  button::after,
+  button:hover::after,
+  button:active::after {
+    display: none;
   }
+}
+
+/* And IE does not support CSS variables and blur effect, so we had to make the same and recreate the background-gradient */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* Fix css var by calling the hexa colors */
+  button {
+    background: -webkit-gradient(linear, left top, right top, from(#7f00ff), to(#e100ff));
+    background: linear-gradient(to right, #7f00ff, #e100ff);
+    -webkit-box-shadow: 0 20px 20px -15px rgba(127, 0, 255, 0.8);
+    box-shadow: 0 20px 20px -15px rgba(127, 0, 255, 0.8);
+    border-collapse: separate;
+  }
+  /* Deleting the shadow */
+  button::after,
+  button:hover::after,
+  button:active::after {
+    display: none;
+  }
+}
+
+*,
+div,
+a,
+p,
+input,
+button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+}
+
+h2 {
+  font-family: "Margarine", sans-serif;
+  font-size: 30px;
+  color: var(--point-color);
 }
