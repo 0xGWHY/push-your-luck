@@ -163,6 +163,30 @@ font-family: 'Noto Sans KR', sans-serif; */
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.16), 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
+.Title {
+  position: absolute;
+  z-index: 10;
+  width: 500px;
+  text-align: center;
+  left: 50%;
+  top: -60px;
+  transform: translateX(-50%);
+  font-family: "Alfa Slab One", cursive;
+  font-size: 2.5rem;
+  color: #ffd400;
+}
+.Description {
+  position: absolute;
+  z-index: 10;
+  width: 500px;
+  left: 330px;
+  top: 10px;
+  font-family: "Chivo Mono", monospace;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+}
+
 .connect-wallet-wrapper {
   height: 4rem;
   width: 100%;
@@ -176,7 +200,7 @@ font-family: 'Noto Sans KR', sans-serif; */
   height: 2rem;
   width: 9rem;
   border: 2px black solid;
-  background: white !important;
+  background: #ffd400 !important;
 
   color: black;
   border-radius: 5px;
@@ -190,8 +214,8 @@ font-family: 'Noto Sans KR', sans-serif; */
 .indicator {
   margin: 1rem;
   /* background-color: black; */
-  background: #dde1e7;
-  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+  background: #ffd400;
+  box-shadow: inset -5px -5px 9px rgba(0, 0, 0, 0.45), inset 5px 5px 9px rgba(0, 0, 0, 0.3);
   border: 2px black solid;
 
   border-radius: 15px;
@@ -202,6 +226,14 @@ font-family: 'Noto Sans KR', sans-serif; */
   align-items: center;
   flex-direction: column;
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .indicator-result {
   height: 1.5rem;
   font-family: "Chivo Mono", monospace;
@@ -210,7 +242,10 @@ font-family: 'Noto Sans KR', sans-serif; */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+
+  animation: fadeIn 1s;
+  animation-fill-mode: forwards;
 }
 .win {
   color: green !important;
@@ -234,6 +269,8 @@ font-family: 'Noto Sans KR', sans-serif; */
   height: 2rem;
   font-size: 2rem;
   width: 100%;
+  animation: fadeIn 1s;
+  animation-fill-mode: forwards;
 }
 .indicator-restEth img {
   margin-right: 0.5rem;
@@ -260,7 +297,10 @@ font-family: 'Noto Sans KR', sans-serif; */
 }
 
 button {
+  width: 200px;
+  height: 50px;
   font-family: "Roboto", sans-serif;
+  font-weight: 500;
   font-size: 16px;
   position: relative;
   outline: none;
@@ -328,6 +368,13 @@ button:hover:active::after {
   -o-filter: blur(10px);
   -ms-filter: blur(10px);
   filter: blur(10px);
+}
+
+svg {
+  transform: scale(0.3);
+  position: absolute;
+  right: 0;
+  top: -75px;
 }
 
 /* Edge does not support blur effect, so we can just delete the ::after element and replace it by a box-shadow */

@@ -9,6 +9,7 @@ import { useWaitForTransaction } from "wagmi";
 import { useContractEvent } from "wagmi";
 import { useNetwork } from "wagmi";
 import { useSwitchNetwork } from "wagmi";
+import { ReactComponent as Loading } from "./images/Ellipsis.svg";
 
 const ceilFunc = (value, position) => {
   let pos = 10 ** position;
@@ -269,7 +270,7 @@ function App() {
     abi: JSON.stringify(option),
     listener(node, label, owner) {
       console.log(node, label, owner);
-      setResult("Lose haha XD");
+      setResult("You lose 🤣");
     },
   });
   useContractEvent({
@@ -278,7 +279,7 @@ function App() {
     abi: JSON.stringify(option),
     listener(node, label, owner) {
       console.log(node, label, owner);
-      setResult("Win!! :)");
+      setResult("You win 🎉");
     },
   });
 
@@ -297,24 +298,41 @@ function App() {
           {UserAddress}
         </div>
       </div>
-      <div className={result.includes("Lose") ? "indicator lose" : "indicator"}>
+      <div className={result.includes("lose") ? "indicator lose" : "indicator"}>
         <p className="indicator-restEth">
           <img alt="ether" src="https://static.nftgo.io/icon/token/ETH.svg"></img>
           {ceilFunc(Number(data?.formatted), 4)}
         </p>
-        <p className={result.includes("Lose") ? "indicator-result lose" : "indicator-result win"}>{result}</p>
-        <p className="indicator-price">price: {price} eth</p>
+        <p className={result.includes("lose") ? "indicator-result lose" : "indicator-result win"}>{result}</p>
+        <p className="indicator-price">fee: {price} eth</p>
       </div>
       <div className="push-button-wrapper">
         <button
           className="push-botton"
           onClick={() => {
-            requestedTx.sendTransaction?.();
+            if (isConnected) {
+              requestedTx.sendTransaction?.();
+            } else {
+              alert("Connect MetaMask first");
+            }
           }}
           disabled={Boolean(completeTx.isLoading)}
         >
-          {completeTx.isLoading ? "Pending...." : "!! Push Your Luck !!"}
+          {completeTx.isLoading && isConnected ? <Loading /> : "Push Your Luck 🔥"}
         </button>
+      </div>
+      <div className="Title">Coin-flip Game</div>
+      <div className="Description">
+        1. The chance is fifty-fifty
+        <br />
+        <br />
+        2. Connect MetaMask(goerli)
+        <br />
+        <br />
+        3. Click the button
+        <br />
+        <br />
+        4. Win or Lose
       </div>
     </div>
   );
